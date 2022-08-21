@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Registered_User  extends User{
-   
+
+   int cash;
 	private String Name;
 	private String No_Plate;
 	private String Date;
@@ -69,18 +70,23 @@ public class Registered_User  extends User{
 	public void setPhone(String phone) {
 		Phone = phone;
 	}
+	
+	public String getString()
+	{
+		return "name = " + Name + " " + "number plate = " +No_Plate + " " + "registration date = " + Date + " " + "payment status = "+ Pay_Status + " vehicle type = " + Vehicle + " phone number = " + Phone ;
+	}
 	 
     
     //Method To check Whether the user is stored or not
 	//In Registered User Method 
 	@Override
-	public void  checkUser()
+	public void checkUser()
 	{
-		Registered_User r1 = new Registered_User("Aditya","0001","12/05/22","Paid","Car","0151111");
-		Registered_User r2 = new Registered_User("Ramesh","0002","11/05/22","Paid","Bike","0150030");
-		Registered_User r3 = new Registered_User("John","0003","13/05/22","NonPaid","Car","0181111");
-		Registered_User r4 = new Registered_User("Khan","0004","14/05/22","Paid","Truck","01911424");
-		Registered_User r5 = new Registered_User("Birla","0005","17/05/22","NonPaid","Car","0141111");
+		Registered_User r1 = new Registered_User("Aditya","0001","12/05/22","Paid","1","0151111");
+		Registered_User r2 = new Registered_User("Ramesh","0002","11/05/22","Paid","3","0150030");
+		Registered_User r3 = new Registered_User("John","0003","13/05/22","NonPaid","6","0181111");
+		Registered_User r4 = new Registered_User("Khan","0004","14/05/22","Paid","8","01911424");
+		Registered_User r5 = new Registered_User("Birla","0005","17/05/22","NonPaid","9","0141111");
 		
 		
 		 ArrayList<Registered_User> names = new ArrayList<Registered_User>();
@@ -111,24 +117,121 @@ public class Registered_User  extends User{
 	             
 	        	 //Check Variable Is Used To Check Register User Exsits Or Not
 	             // if Check is > 0 print User found orElse Print User NotFound
-	            	
+				 //System.out.println("Registerted User Found");
 	        	  check+=1;
+
+				  String st44 = names.get(i).getNo_Plate();
+
+				  int vno =Integer.parseInt(st44);
+
+				  System.out.println("\nName: " + names.get(i).getName());
+				  System.out.println("Number plate: " + names.get(i).getNo_Plate());
+				  System.out.println("Phone number: " + names.get(i).getPhone());
+				  Vehicle_Class vclass = new Vehicle_Class();
+                  vclass.vehicleClass(vno);
+				  Vehicle_Class payment = new Vehicle_Class();
+                  int pay = payment.payment(vno);
+				  System.out.println("Payable amount: "+ pay);
+				  System.out.println("Payment status: "+ names.get(i).Pay_Status);
+
+				  
+
+				  if (names.get(i).Pay_Status=="NonPaid"){
+					System.out.println("Enter User amount:" );
+				//Scanner amount = new Scanner(System.in);
+					cash = sc.nextInt();
+				  }
+				  //
+				  //
+				  
+				 
+				  System.out.println("\n\nReceipt\n\n");
+
+
+				  Toll_Plaza trxid = new Toll_Plaza();
+                  int c = trxid.transectionID();
+				  System.out.println("Transaction Id: "+c);
+	        	  
+	        	  Toll_Plaza date_time = new Toll_Plaza();
+				  System.out.print("Date: ");
+                  date_time.Date();
+				  System.out.print("Time: ");
+                  date_time.Time();
+				  vclass.vehicleClass(vno);
+
+				  if (names.get(i).Pay_Status=="NonPaid"){
+
+					
+					
+					System.out.println("Payment method: Cash");
+
+				  Payment trxDetails = new Payment();
+
+				  trxDetails.transectionDetails(cash, vno);
+				  }
+				  else
+				  System.out.println("Payment method: Online");
+
+				  
+                  
+
+				  System.out.println("Payment status: Paid");
 	        	  
 	           }
+
+			   
+
+			   
+	            
+	        
+//	            if(check > 0)
+//		        {
+//		        	System.out.println("name = " + names.get(i).getName() + "number plate = " +No_Plate + " " + "registration date = " + Date + " " + "payment status = "+ Pay_Status + " vehicle type = " + Vehicle + " phone number = " + Phone);
+//		        }
+//		        
+//		        else
+//		        {
+//		        	System.out.println("No Registerted User Found");
+//		        }
+	            
 	            
 	       } 
+           
+		   
+
+		   if(check > 0)
+		   {
+			System.out.println("\nRegisterted User Found");
+		}
+		
+		else
+		{
+			System.out.println("\nNo Registerted User Found");
+		}
 	     
-	     
-	     // if Check is > 0 print User found orElse Print User NotFound   
-	        if(check > 0)
+	    /* 
+	     for(int i=0 ;i<names.size();i++)
+	     {
+	    	 
+	     if(check > 0)
 	        {
-	        	System.out.println("Registerted User Found");
+	        	System.out.println("name = " + names.get(i).getName() + "number plate = " +No_Plate + " " + "registration date = " + Date + " " + "payment status = "+ Pay_Status + " vehicle type = " + Vehicle + " phone number = " + Phone);
 	        }
 	        
 	        else
 	        {
 	        	System.out.println("No Registerted User Found");
 	        }
+	     }
+	     */
+	     
+	     
+	     // if Check is > 0 print User found orElse Print User NotFound   
+	      
+	        
+	        
+	        	
+	        
 	        
 	      
 		

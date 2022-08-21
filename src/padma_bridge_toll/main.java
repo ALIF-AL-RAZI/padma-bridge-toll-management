@@ -85,7 +85,9 @@ public class main {
                 
 		
                Toll_Plaza date_time = new Toll_Plaza();
-                date_time.Date_Time();
+                date_time.Date();
+                date_time.Time();
+
 		/*int count=1;*/
 		while (true) {
                         User r1 = new User();
@@ -95,9 +97,13 @@ public class main {
                         System.out.println(total_vehicle);*/
 
                         Toll_Plaza count = new Toll_Plaza();
-                        int pay = count.vehicle_count(v);
-                        System.out.println("Today Vehicle count: " + pay);
+                        int c = count.vehicle_count(v);
+                        System.out.println("\nToday Vehicle count: " + c+"\n");
+
+                        
                     }
+
+                    
 
                     /*System.out.println("Enter Vehicle Class:");
                 

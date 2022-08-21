@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Non_Registerted_User extends User{
   
+	int cash;
 	private String Name;
 	private String Date;
 	private String Pay_Status;
@@ -67,28 +68,30 @@ public class Non_Registerted_User extends User{
 	{   
 		 
 		 Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
-	     System.out.print("Enter User Name");  
+	     System.out.print("Enter User Name: ");  
 	     str0= sc.nextLine(); 
 	     //System.in is a standard input stream  
-	     System.out.print("Enter User Car Number");  
+	     System.out.print("Enter User Number Plate: ");  
 	     str1= sc.nextLine(); 
 	     //System.in is a standard input stream  
-	     System.out.print("Enter User Date");  
-	     str2= sc.nextLine(); 
+	      
+		 System.out.print("Enter User Phone Number: ");  
+	     str5= sc.nextLine();
+	      
 	     
-	     System.out.print("Enter Payment");  
-	     str3= sc.nextLine(); 
-	     
-	     System.out.print("Enter Vehicle");  
+	     System.out.print("Enter Vehicle Class: ");  
 	     int st44= sc.nextInt(); 
 
 		
                 
                 Vehicle_Class payment = new Vehicle_Class();
-                payment.payment(st44);
+                int pay = payment.payment(st44);
+				System.out.println("Payable Amount: " + pay);
+
+				System.out.println("Enter User amount:" );
+				//Scanner amount = new Scanner(System.in);
+					cash = sc.nextInt();
 	     
-	     System.out.print("Enter Phone Number");  
-	     str5= sc.nextLine(); 
 	     
 	     
 	     Non_Registerted_User n1 = new Non_Registerted_User(str0,str1,str2,str3,str4,str5);
@@ -96,11 +99,51 @@ public class Non_Registerted_User extends User{
 	     ArrayList<Non_Registerted_User> names = new ArrayList<Non_Registerted_User>();
 		  
 	     names.add(n1);
+
+
+		 System.out.println("\n\nReceipt\n\n");
+
+
+				  Toll_Plaza trxid = new Toll_Plaza();
+                  int c = trxid.transectionID();
+				  System.out.println("Transaction Id: "+c);
+	        	  
+	        	  Toll_Plaza date_time = new Toll_Plaza();
+				  System.out.print("Date: ");
+                  date_time.Date();
+				  System.out.print("Time: ");
+                  date_time.Time();
+				  Vehicle_Class vclass = new Vehicle_Class();
+                  
+				  vclass.vehicleClass(st44);
+
+				  System.out.println("Payment method: Cash");
+				  
+
+				  Payment trxDetails = new Payment();
+
+				  trxDetails.transectionDetails(cash, st44);
+
+				  /*if (names.get(i).Pay_Status=="NonPaid"){
+
+					
+					
+					
+				  }
+				  else
+				  System.out.println("Payment method: Online");*/
+
+				  
+                  
+
+				  System.out.println("Payment status: Paid");
+	        	  
+	           }
 	    
 
 	    
 	     
-	}
+	
 	
 	//This method will display the print the user Values.
 	public String getString()
